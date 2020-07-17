@@ -38,12 +38,15 @@ fn main() -> Result<(), ExitError> {
     let normalized_name = normalize_name(problem);
 
     // generate problem source code
-    let template_str = fs::read_to_string("./templates/problem.rs")
+    let template_path = Path::new(env!("CARGO_MANIFEST_DIR")).join("templates/problem.rs");
+    let template_str = fs::read_to_string(template_path)
         .map_err(|e| ExitError(format!("Cannot read problem template. Err: {}", e)))?;
     let source = template_str
         .replace("__PROBLEM_LINK__", input_url)
         .replace("__PROBLEM_NAME__", &normalized_name);
-    let source_path = Path::new("./src/problems").join(format!("{}.rs", normalized_name));
+    let source_path = Path::new(env!("CARGO_MANIFEST_DIR"))
+        .join("src/problems")
+        .join(format!("{}.rs", normalized_name));
     if source_path.exists() {
         return Err(ExitError("Source file already exists".to_string()));
     }
@@ -58,11 +61,12 @@ fn main() -> Result<(), ExitError> {
         .map_err(|e| ExitError(format!("Cannot write into source file. Err: {}", e)))?;
     drop(source_file);
 
+    let mod_path = Path::new(env!("CARGO_MANIFEST_DIR")).join("src/problems/mod.rs");
     let mut mod_file = fs::OpenOptions::new()
         .read(true)
         .write(true)
         .append(true)
-        .open("./src/problems/mod.rs")
+        .open(mod_path)
         .map_err(|e| ExitError(format!("Cannot open problems/mod.rs. Err: {}", e)))?;
     let mut mod_contents = String::new();
     mod_file
