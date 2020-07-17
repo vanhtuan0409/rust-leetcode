@@ -3,8 +3,11 @@ name = "rust-leetcode"
 version = "0.1.0"
 authors = ["Tuan Vuong <vanhtuan0409@gmail.com>"]
 edition = "2018"
+default-run = "rust-leetcode"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "generate"
+path = "src/generate/main.rs"
 
 [dependencies]
 regex = "1"
