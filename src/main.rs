@@ -61,6 +61,7 @@ fn main() -> Result<(), ExitError> {
         .map_err(|e| ExitError(format!("Cannot write into source file. Err: {}", e)))?;
     drop(source_file);
 
+    // modify mod.rs
     let mod_path = Path::new(env!("CARGO_MANIFEST_DIR")).join("src/problems/mod.rs");
     let mut mod_file = fs::OpenOptions::new()
         .read(true)
