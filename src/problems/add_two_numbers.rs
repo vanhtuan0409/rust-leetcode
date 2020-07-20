@@ -85,24 +85,21 @@ mod tests {
     fn test() {
         assert_eq!(
             ListNode::from(vec![8, 0, 7]),
-            super::Solution::add_two_numbers(
-                ListNode::from(vec![3, 4, 2]),
-                ListNode::from(vec![4, 6, 5])
-            )
+            Solution::add_two_numbers(ListNode::from(vec![3, 4, 2]), ListNode::from(vec![4, 6, 5]))
         );
         assert_eq!(
             ListNode::from(vec![2, 4, 3]),
-            super::Solution::add_two_numbers(ListNode::from(vec![2, 4, 3]), None,)
+            Solution::add_two_numbers(ListNode::from(vec![2, 4, 3]), None,)
         );
         assert_eq!(
             ListNode::from(vec![5, 6, 4]),
-            super::Solution::add_two_numbers(None, ListNode::from(vec![5, 6, 4]))
+            Solution::add_two_numbers(None, ListNode::from(vec![5, 6, 4]))
         );
-        assert_eq!(None, super::Solution::add_two_numbers(None, None,));
+        assert_eq!(None, Solution::add_two_numbers(None, None,));
 
         assert_eq!(
             ListNode::from(vec![1, 0]),
-            super::Solution::add_two_numbers(ListNode::from(vec![5]), ListNode::from(vec![5]))
+            Solution::add_two_numbers(ListNode::from(vec![5]), ListNode::from(vec![5]))
         );
     }
 }
