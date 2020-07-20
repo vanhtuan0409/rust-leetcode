@@ -1,4 +1,6 @@
-use crate::data_structures::list::ListNode;
+use crate::data_structures::list;
+
+type ListNode = list::ListNode<i32>;
 
 #[allow(dead_code)]
 pub struct Solution {}
