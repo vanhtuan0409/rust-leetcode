@@ -16,7 +16,7 @@ impl<T: Copy> ListNode<T> {
     #[allow(dead_code)]
     pub fn from(l: Vec<T>) -> Option<Box<Self>> {
         let mut ret = None;
-        for &item in l.iter().rev() {
+        for &item in l.iter() {
             let mut node = ListNode::new(item);
             node.next = ret;
             ret = Some(Box::new(node));
