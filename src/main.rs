@@ -1,3 +1,4 @@
+mod data_structures;
 mod problems;
 
 use problems::two_sum::Solution;
